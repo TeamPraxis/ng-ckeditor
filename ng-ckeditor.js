@@ -84,7 +84,9 @@
 
                     element.bind('$destroy', function () {
                         if (instance && CKEDITOR.instances[instance.name]) {
-                            CKEDITOR.instances[instance.name].destroy();
+                            try {
+                                CKEDITOR.instances[instance.name].destroy();
+                            } catch (e) { }
                         }
                     });
                     var setModelData = function (setPristine) {
